@@ -1,4 +1,4 @@
-# Express  Template Boillerplate RestfullApi
+# Pelaporan Dashboard Queue
 [![Maintainability](https://api.codeclimate.com/v1/badges/0dc437426c4b1f867461/maintainability)](https://codeclimate.com/github/firmanJS/express-template/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0dc437426c4b1f867461/test_coverage)](https://codeclimate.com/github/firmanJS/express-template/test_coverage)
 [![Node.js CI](https://github.com/firmanJS/express-template/actions/workflows/node.js.yml/badge.svg)](https://github.com/firmanJS/express-template/actions/workflows/node.js.yml)
@@ -11,12 +11,6 @@
 [![GitHub issues](https://img.shields.io/github/issues/firmanjs/express-template.svg)](https://github.com/firmanJS/express-template/issues/)
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/firmanjs/express-template.svg)](https://github.com/firmanJS/express-template/pulls/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
-## How To use
-you must click the button use this template
-- **using template** - create name of your repository
-- **rename link readme** - change link repo default `github/firmanJS/express-template` to your repo
-- **codeclimate** - you must integrate repo to codeclimate don't forget set your repo is public for integrated and in github repo settings create secret key with name `CC_TEST_REPORTER_ID` and value from code climate `REPORTER ID` in [https://codeclimate.com/](https://codeclimate.com/)
 
 ## Core Stack
 - **Node.js** - [http://nodejs.org/](http://nodejs.org/)
@@ -31,7 +25,6 @@ you must click the button use this template
 1. coverage use jest
 1. with docker example
 1. validiation, use express-valdator and joi
-1. pagination example
 1. custom message api response
 1. eslint airbnb base
 
@@ -74,16 +67,6 @@ make docker-stop
 make docker-down 
 ```
 
-### fill in the copied environment earlier
-
-```sh
-APP_PORT=2000
-TZ=Asia/Jakarta
-MONGO_SERVICE=# uri mongodb
-AUTH_SOURCE= #auth service
-SECRET_KEY= #jwt secret key here
-```
-
 ### run with docker-compose
 
 ```sh
@@ -98,14 +81,11 @@ docker-compose up --build -d
 ### execution npm with container docker
 ```sh
 # install package
-docker-compose exec boillerplate npm install
+docker-compose exec dashboard-queue npm install
 
 # running unit testing
-docker-compose exec boillerplate npm run test
+docker-compose exec dashboard-queue npm run test
 ```
-
-## Documentation API 
-using swagger check in folder static
 
 ## Project Structure
 ```
@@ -120,9 +100,6 @@ using swagger check in folder static
 ├── middleware/       * all middleware file here, for check before next to api
 ├── routes/           * all file route here
 |   └── index.js      * register all route
-├── static/           * all configuration swagger
-|   └── path          * custom your path api
-|   └── schema        * custom schema body
 ├── test/             * all test file here
 |   └── index.js      * test apps
 ├── utils/            * all utils file here
@@ -131,9 +108,9 @@ using swagger check in folder static
 
 ## Code Style Guides
 * Guideline:
-  * Use camelCase for variable name, naming function, load module or other functions
+  * Use camelCase for variable name, naming function,
   * Use UpperCase for Constant Variable
-  * Use PascalCase for class name, models, api, route, load module model
+  * Use PascalCase for models name and required models
   * Use snake_case for file name as variable
   * Function name use Verb
   * Variable name use Noun
