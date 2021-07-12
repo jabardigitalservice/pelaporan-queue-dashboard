@@ -107,7 +107,7 @@ docker-compose exec dashboard-queue npm run test
 
 ## Code Style Guides
 * Guideline:
-  * Use camelCase for variable name, naming function,
+  * Use camelCase for variable name, naming function, and naming file api, and routes
   * Use UpperCase for Constant Variable
   * Use PascalCase for models name and required models
   * Use snake_case for file name as variable
