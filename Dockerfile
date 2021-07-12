@@ -1,6 +1,6 @@
 FROM node:16-alpine
 
-WORKDIR /usr/apps/express-template
+WORKDIR /usr/apps/jds/express-dashboard-queue
 
 COPY . .
 

@@ -1,7 +1,7 @@
 {
-  "name": "express-template-restfullapi",
+  "name": "pelaporan-queue-dashboard",
   "version": "1.4",
-  "description": "express boilerplate template restfullapi",
+  "description": "pelaporan-queue-dashboard",
   "main": "index.js",
   "scripts": {
     "prod": "pm2 index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/firmanJS/express-template.git"
+    "url": "git+https://github.com/jabardigitalservice/pelaporan-queue-dashboard.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
@@ -24,15 +24,18 @@
     "boillerplate",
     "template",
     "structure",
+    "dashboard",
+    "queue",
+    "redis",
     "api",
     "restfullapi"
   ],
   "author": "firmanjs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/firmanJS/express-template/issues"
+    "url": "https://github.com/jabardigitalservice/pelaporan-queue-dashboard/issues"
   },
-  "homepage": "https://github.com/firmanJS/express-template#readme",
+  "homepage": "https://github.com/jabardigitalservice/pelaporan-queue-dashboard#readme",
   "devDependencies": {
     "eslint": "^7.15.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -60,10 +63,8 @@
     "morgan": "^1.10.0",
     "node-mocks-http": "^1.10.1",
     "nodemon": "^2.0.4",
-    "password-hash": "^1.2.2",
     "pm2": "^4.5.0",
     "supertest": "^6.1.3",
-    "swagger-ui-express": "^4.1.6",
     "xss-clean": "^0.1.1"
   }
 }

@@ -2,29 +2,22 @@ version: '3'
 services:
 
   # Nodejs
-  template:
-    image: template
-    container_name: template
+  dashboard-queue:
+    image: dashboard-queue
+    container_name: dashboard-queue
     build:
       context: .
       dockerfile: Dockerfile
     networks:
-      express_template_network:
+      pelaporan_dashboard-queue_network:
     restart: always
     volumes:
-      - .:/usr/apps/express-template
-      - /usr/apps/express-template/node_modules
+      - .:/usr/apps/jds/express-dashboard-queue
+      - /usr/apps/jds/express-dashboard-queue/node_modules
     ports:
       - "${APP_PORT}:${APP_PORT}"
 
 #Docker Networks
 networks:
-  express_template_network:
+  pelaporan_dashboard-queue_network:
     driver: bridge
-
-#Volumes ex using mongodb
-# volumes:
-#   mongodb_service:
-#     driver: local
-#   mongodb_service_config:
-#     driver: local

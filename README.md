@@ -1,22 +1,15 @@
-# Express  Template Boillerplate RestfullApi
-[![Maintainability](https://api.codeclimate.com/v1/badges/0dc437426c4b1f867461/maintainability)](https://codeclimate.com/github/firmanJS/express-template/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/0dc437426c4b1f867461/test_coverage)](https://codeclimate.com/github/firmanJS/express-template/test_coverage)
-[![Node.js CI](https://github.com/firmanJS/express-template/actions/workflows/node.js.yml/badge.svg)](https://github.com/firmanJS/express-template/actions/workflows/node.js.yml)
-[![made-with-nodejs](https://img.shields.io/badge/Made%20with-Nodejs-1f425f.svg)](https://nodejs.org)
+# Pelaporan Dashboard Queue
+[![Maintainability](https://api.codeclimate.com/v1/badges/02d8ecaa0f0df6746e64/maintainability)](https://codeclimate.com/github/jabardigitalservice/pelaporan-queue-dashboard/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/02d8ecaa0f0df6746e64/test_coverage)](https://codeclimate.com/github/jabardigitalservice/pelaporan-queue-dashboard/test_coverage)
+[![Node.js CI](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/actions/workflows/node.js.yml/badge.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/actions/workflows/node.js.yml)
 [![made-with-expressjs](https://img.shields.io/badge/Made%20with-Expressjs-1f425f.svg)](https://expressjs.com/)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/firmanJS)
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/firmanJS/express-template/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/firmanjs/express-template.svg)](https://github.com/firmanJS/express-template/releases)
-[![Github all releases](https://img.shields.io/github/downloads/firmanjs/express-template/total.svg)](https://github.com/firmanJS/express-template/releases)
-[![GitHub issues](https://img.shields.io/github/issues/firmanjs/express-template.svg)](https://github.com/firmanJS/express-template/issues/)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/firmanjs/express-template.svg)](https://github.com/firmanJS/express-template/pulls/)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/jabardigitalservice/pelaporan-queue-dashboard.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/releases)
+[![Github all releases](https://img.shields.io/github/downloads/jabardigitalservice/pelaporan-queue-dashboard/total.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/releases)
+[![GitHub issues](https://img.shields.io/github/issues/jabardigitalservice/pelaporan-queue-dashboard.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/issues/)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/jabardigitalservice/pelaporan-queue-dashboard.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/pulls/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
-## How To use
-you must click the button use this template
-- **using template** - create name of your repository
-- **rename link readme** - change link repo default `github/firmanJS/express-template` to your repo
-- **codeclimate** - you must integrate repo to codeclimate don't forget set your repo is public for integrated and in github repo settings create secret key with name `CC_TEST_REPORTER_ID` and value from code climate `REPORTER ID` in [https://codeclimate.com/](https://codeclimate.com/)
 
 ## Core Stack
 - **Node.js** - [http://nodejs.org/](http://nodejs.org/)
@@ -31,7 +24,6 @@ you must click the button use this template
 1. coverage use jest
 1. with docker example
 1. validiation, use express-valdator and joi
-1. pagination example
 1. custom message api response
 1. eslint airbnb base
 
@@ -74,16 +66,6 @@ make docker-stop
 make docker-down 
 ```
 
-### fill in the copied environment earlier
-
-```sh
-APP_PORT=2000
-TZ=Asia/Jakarta
-MONGO_SERVICE=# uri mongodb
-AUTH_SOURCE= #auth service
-SECRET_KEY= #jwt secret key here
-```
-
 ### run with docker-compose
 
 ```sh
@@ -98,14 +80,11 @@ docker-compose up --build -d
 ### execution npm with container docker
 ```sh
 # install package
-docker-compose exec boillerplate npm install
+docker-compose exec dashboard-queue npm install
 
 # running unit testing
-docker-compose exec boillerplate npm run test
+docker-compose exec dashboard-queue npm run test
 ```
-
-## Documentation API 
-using swagger check in folder static
 
 ## Project Structure
 ```
@@ -120,9 +99,6 @@ using swagger check in folder static
 ├── middleware/       * all middleware file here, for check before next to api
 ├── routes/           * all file route here
 |   └── index.js      * register all route
-├── static/           * all configuration swagger
-|   └── path          * custom your path api
-|   └── schema        * custom schema body
 ├── test/             * all test file here
 |   └── index.js      * test apps
 ├── utils/            * all utils file here
@@ -131,9 +107,9 @@ using swagger check in folder static
 
 ## Code Style Guides
 * Guideline:
-  * Use camelCase for variable name, naming function, load module or other functions
+  * Use camelCase for variable name, naming function, and naming file api, and routes
   * Use UpperCase for Constant Variable
-  * Use PascalCase for class name, models, api, route, load module model
+  * Use PascalCase for models name and required models
   * Use snake_case for file name as variable
   * Function name use Verb
   * Variable name use Noun
