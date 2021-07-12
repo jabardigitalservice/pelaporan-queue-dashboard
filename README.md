@@ -1,15 +1,14 @@
 # Pelaporan Dashboard Queue
-[![Maintainability](https://api.codeclimate.com/v1/badges/0dc437426c4b1f867461/maintainability)](https://codeclimate.com/github/firmanJS/express-template/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/0dc437426c4b1f867461/test_coverage)](https://codeclimate.com/github/firmanJS/express-template/test_coverage)
-[![Node.js CI](https://github.com/firmanJS/express-template/actions/workflows/node.js.yml/badge.svg)](https://github.com/firmanJS/express-template/actions/workflows/node.js.yml)
-[![made-with-nodejs](https://img.shields.io/badge/Made%20with-Nodejs-1f425f.svg)](https://nodejs.org)
+[![Maintainability](https://api.codeclimate.com/v1/badges/02d8ecaa0f0df6746e64/maintainability)](https://codeclimate.com/github/jabardigitalservice/pelaporan-queue-dashboard/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/02d8ecaa0f0df6746e64/test_coverage)](https://codeclimate.com/github/jabardigitalservice/pelaporan-queue-dashboard/test_coverage)
+[![Node.js CI](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/actions/workflows/node.js.yml/badge.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/actions/workflows/node.js.yml)
 [![made-with-expressjs](https://img.shields.io/badge/Made%20with-Expressjs-1f425f.svg)](https://expressjs.com/)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/firmanJS)
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/firmanJS/express-template/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/firmanjs/express-template.svg)](https://github.com/firmanJS/express-template/releases)
-[![Github all releases](https://img.shields.io/github/downloads/firmanjs/express-template/total.svg)](https://github.com/firmanJS/express-template/releases)
-[![GitHub issues](https://img.shields.io/github/issues/firmanjs/express-template.svg)](https://github.com/firmanJS/express-template/issues/)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/firmanjs/express-template.svg)](https://github.com/firmanJS/express-template/pulls/)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/jabardigitalservice/pelaporan-queue-dashboard.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/releases)
+[![Github all releases](https://img.shields.io/github/downloads/jabardigitalservice/pelaporan-queue-dashboard/total.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/releases)
+[![GitHub issues](https://img.shields.io/github/issues/jabardigitalservice/pelaporan-queue-dashboard.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/issues/)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/jabardigitalservice/pelaporan-queue-dashboard.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/pulls/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 ## Core Stack
