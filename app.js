@@ -9,6 +9,9 @@ const xss = require('xss-clean')
 const morgan = require('morgan')
 const Sentry = require('@sentry/node')
 const Tracing = require('@sentry/tracing')
+// eslint-disable-next-line import/no-unresolved
+const Arena = require('bull-arena')
+const Bee = require('bee-queue')
 const { notFoundHandler, errorHandler } = require('./utils/exceptions')
 const { MORGAN_FORMAT } = require('./utils/constant')
 const routing = require('./routes')
@@ -29,6 +32,42 @@ app.get('/favicon.ico', (_req, res) => {
   res.end()
 })
 app.use(xss()) // handler xss attack
+const arena = new Arena({
+  Bee,
+  queues: [
+    {
+      type: 'bee',
+
+      // Name of the bull queue, this name must match up exactly with what you've defined in bull.
+      name: 'my-awesome-queue',
+
+      // Hostname or queue prefix, you can put whatever you want.
+      hostId: 'Dashboard Queue Pelaporan',
+
+      // Redis auth.
+      redis: {
+        port: process.env.REDIS_PORT,
+        host: process.env.REDIS_HOST,
+      },
+    },
+  ],
+
+  // Optionally include your own stylesheet
+  customCssPath: 'https://example.com/custom-arena-styles.css',
+
+  // Optionally include your own script
+  customJsPath: 'https://example.com/custom-arena-js.js',
+},
+{
+  // Make the arena dashboard become available at {my-site.com}/arena.
+  basePath: '/arena',
+
+  // Let express handle the listening.
+  disableListen: true,
+});
+
+// Make arena's resources (js/css deps) available at the base app route
+app.use('/dashboard', arena);
 app.use(routing) // routing
 app.use(notFoundHandler) // 404 handler
 app.use(errorHandler) // error handlerr

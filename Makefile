@@ -1,10 +1,12 @@
+docker-build:
+	docker-compose -f docker-compose-development.yml up --build --remove-orphans --force-recreate
 docker-start:
-	docker-compose up --build --remove-orphans --force-recreate
+	docker-compose -f docker-compose-development.yml up
 docker-stop:
-	docker-compose stop
+	docker-compose -f docker-compose-development.yml stop
 docker-test:
-	docker-compose exec boillerplate yarn test
+	docker-compose -f docker-compose-development.yml exec dashboard-queue yarn test
 docker-coverage:
-	docker-compose exec boillerplate yarn test:coverage
+	docker-compose -f docker-compose-development.yml exec dashboard-queue yarn test:coverage
 docker-down:
-	docker-compose down
+	docker-compose -f docker-compose-development.yml down
