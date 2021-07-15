@@ -1,9 +1,10 @@
 const Queue = require('bee-queue')
+require('dotenv').config()
 
 const sharedConfig = {
   redis: {
-    host: 'redis-dashboard',
-    port: 6379,
+    host: `'${process.env.REDIS_HOST}'`,
+    port: process.env.REDIS_PORT,
   },
   sendEvents: false,
   removeOnSuccess: false,
@@ -12,7 +13,7 @@ const sharedConfig = {
 
 const queue = new Queue('my-awesome-queue', sharedConfig)
 const test = () => {
-  queue.createJob({ asem: 'jawa' })
+  queue.createJob({ province: 'jawa barat' })
     .retries(10)
     .save()
 

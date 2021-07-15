@@ -85,8 +85,8 @@ docker-compose -f docker-compose-development.yml up --build -d
 # install package
 docker-compose -f docker-compose-development.yml exec dashboard-queue yarn install
 
-# running unit testing
-docker-compose -f docker-compose-development.yml exec dashboard-queue yarn run test
+# running unit testing and coverage
+docker-compose -f docker-compose-development.yml exec dashboard-queue yarn run test:coverage
 ```
 
 ## Project Structure

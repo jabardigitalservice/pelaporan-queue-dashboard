@@ -9,10 +9,8 @@ const xss = require('xss-clean')
 const morgan = require('morgan')
 const Sentry = require('@sentry/node')
 const Tracing = require('@sentry/tracing')
-// eslint-disable-next-line import/no-unresolved
-const Arena = require('bull-arena')
-const Bee = require('bee-queue')
 const { notFoundHandler, errorHandler } = require('./utils/exceptions')
+const { arena } = require('./middleware')
 const { MORGAN_FORMAT } = require('./utils/constant')
 const routing = require('./routes')
 require('dotenv').config()
@@ -32,45 +30,6 @@ app.get('/favicon.ico', (_req, res) => {
   res.end()
 })
 app.use(xss()) // handler xss attack
-const arena = new Arena({
-  Bee,
-  queues: [
-    {
-      type: 'bee',
-
-      // Name of the bull queue, this name must match up exactly with what you've defined in bull.
-      name: 'my-awesome-queue',
-
-      // Hostname or queue prefix, you can put whatever you want.
-      hostId: 'Dashboard Queue Pelaporan',
-
-      // Redis auth.
-      redis: {
-        port: process.env.REDIS_PORT,
-        host: process.env.REDIS_HOST,
-      },
-    },
-  ],
-
-  // Optionally include your own stylesheet
-  customCssPath: 'https://example.com/custom-arena-styles.css',
-
-  // Optionally include your own script
-  customJsPath: 'https://example.com/custom-arena-js.js',
-},
-{
-  // Make the arena dashboard become available at {my-site.com}/arena.
-  basePath: '/arena',
-
-  // Let express handle the listening.
-  disableListen: true,
-});
-
-// Make arena's resources (js/css deps) available at the base app route
-app.use('/dashboard', arena);
-app.use(routing) // routing
-app.use(notFoundHandler) // 404 handler
-app.use(errorHandler) // error handlerr
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
@@ -85,20 +44,20 @@ Sentry.init({
       // router: someRouter,
     }),
   ],
-
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control
   tracesSampleRate: process.env.SENTRY_TRACE_RATE,
-});
-
+})
 // RequestHandler creates a separate execution context using domains, so that every
 // transaction/span/breadcrumb is attached to its own Hub instance
-app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.requestHandler())
 // TracingHandler creates a trace for every incoming request
-app.use(Sentry.Handlers.tracingHandler());
-
+app.use(Sentry.Handlers.tracingHandler())
 // the rest of your app
-
-app.use(Sentry.Handlers.errorHandler());
+app.use(Sentry.Handlers.errorHandler())
+app.use('/dashboard', arena)
+app.use(routing) // routing
+app.use(notFoundHandler) // 404 handler
+app.use(errorHandler) // error handlerr
 
 module.exports = app
