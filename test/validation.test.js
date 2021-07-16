@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 const httpMock = require('node-mocks-http')
 const {
-  convertDate, validateData, resultValidation, countValidation
+  validateData, resultValidation, countValidation
 } = require('../utils')
 
 let req
@@ -14,12 +14,6 @@ describe('utils custom testing ', () => {
     req = httpMock.createRequest()
     res = httpMock.createResponse()
     next = jest.fn()
-  })
-
-  it('convertdate', () => {
-    const getDate = convertDate({})
-    expect(convertDate({})).toHaveProperty('createdAt', getDate.createdAt)
-    expect(convertDate({})).toHaveProperty('updatedAt', getDate.updatedAt)
   })
 
   it('validate data', () => {

@@ -1,8 +1,10 @@
+/* eslint-disable import/no-unresolved */
 // eslint-disable-next-line import/no-unresolved
 const Arena = require('bull-arena')
 const Bee = require('bee-queue')
 
 const redactionDashboard = 'Dashboard Queue Pelaporan'
+require('dotenv').config()
 
 const arena = new Arena({
   Bee,
@@ -16,8 +18,8 @@ const arena = new Arena({
       // Redis auth.
       redis: {
         port: process.env.REDIS_PORT,
-        host: process.env.REDIS_HOST,
-      },
+        host: process.env.REDIS_HOST
+      }
     },
     {
       type: 'bee',
@@ -28,9 +30,9 @@ const arena = new Arena({
       // Redis auth.
       redis: {
         port: process.env.REDIS_PORT,
-        host: process.env.REDIS_HOST,
-      },
-    },
+        host: process.env.REDIS_HOST
+      }
+    }
   ],
   // Optionally include your own stylesheet
   customCssPath: 'https://example.com/custom-arena-styles.css',

@@ -39,14 +39,14 @@ Sentry.init({
     // enable Express.js middleware tracing
     new Tracing.Integrations.Express({
       // to trace all requests to the default router
-      app,
+      app
       // alternatively, you can specify the routes you want to trace:
       // router: someRouter,
-    }),
+    })
   ],
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control
-  tracesSampleRate: process.env.SENTRY_TRACE_RATE,
+  tracesSampleRate: process.env.SENTRY_TRACE_RATE
 })
 // RequestHandler creates a separate execution context using domains, so that every
 // transaction/span/breadcrumb is attached to its own Hub instance
