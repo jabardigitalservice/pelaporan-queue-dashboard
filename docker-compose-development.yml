@@ -1,0 +1,37 @@
+version: '3'
+services:
+
+  # Nodejs
+  dashboard-queue:
+    image: dashboard-queue
+    container_name: dashboard-queue
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      pelaporan-dashboard-queue-network:
+    restart: always
+    volumes:
+      - .:/usr/apps/jds/express-dashboard-queue
+      - /usr/apps/jds/express-dashboard-queue/node_modules
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+
+  redis:
+    image: redis:6-alpine3.13
+    container_name: redis-dashboard
+    volumes:
+      - redis-dashboard:/data/redis
+    networks:
+      pelaporan-dashboard-queue-network:
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
+
+#Docker Networks
+networks:
+  pelaporan-dashboard-queue-network:
+    driver: bridge
+
+#volume
+volumes:
+  redis-dashboard:
