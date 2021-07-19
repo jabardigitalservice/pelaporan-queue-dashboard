@@ -13,3 +13,5 @@ checks:
 exclude_patterns:
 - node_modules/
 - test/
+- config/
+- database
