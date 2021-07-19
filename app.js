@@ -10,7 +10,7 @@ const morgan = require('morgan')
 const Sentry = require('@sentry/node')
 const Tracing = require('@sentry/tracing')
 const { notFoundHandler, errorHandler } = require('./utils/exceptions')
-const { arena } = require('./middleware')
+const { arena, basicAuth } = require('./middleware')
 const { MORGAN_FORMAT } = require('./utils/constant')
 const routing = require('./routes')
 require('dotenv').config()
@@ -55,7 +55,8 @@ Sentry.init({
 app.use(Sentry.Handlers.tracingHandler())
 // the rest of your app
 app.use(Sentry.Handlers.errorHandler())
-app.use('/dashboard', arena)
+
+app.use('/dashboard', basicAuth, arena)
 app.use(routing) // routing
 app.use(notFoundHandler) // 404 handler
 app.use(errorHandler) // error handlerr

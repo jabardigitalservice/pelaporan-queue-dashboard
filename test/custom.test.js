@@ -18,4 +18,10 @@ describe('utils custom testing ', () => {
     const msg = require('../utils/exceptions')
     validateData(req, res, msg, 'world', {})
   })
+
+  it('validate data', () => {
+    // eslint-disable-next-line global-require
+    const msg = require('../utils/exceptions')
+    validateData(req, res, msg, 'world', {})
+  })
 })
