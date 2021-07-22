@@ -1,7 +1,7 @@
 # Pelaporan Dashboard Queue
 [![Maintainability](https://api.codeclimate.com/v1/badges/02d8ecaa0f0df6746e64/maintainability)](https://codeclimate.com/github/jabardigitalservice/pelaporan-queue-dashboard/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/02d8ecaa0f0df6746e64/test_coverage)](https://codeclimate.com/github/jabardigitalservice/pelaporan-queue-dashboard/test_coverage)
-[![Node.js CI](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/actions/workflows/node.js.yml/badge.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/actions/workflows/node.js.yml)
+[![Node.js CI Production](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/actions/workflows/production.yml/badge.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/actions/workflows/production.yml)
 [![made-with-expressjs](https://img.shields.io/badge/Made%20with-Expressjs-1f425f.svg)](https://expressjs.com/)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/firmanJS)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/jabardigitalservice/pelaporan-queue-dashboard/blob/master/LICENSE)
@@ -56,6 +56,9 @@ npm run test or yarn test
 * via make :
 
 ```sh
+# start aplication with docker and build
+make docker-build 
+
 # start aplication with docker
 make docker-start 
 
@@ -69,21 +72,21 @@ make docker-down
 ### run with docker-compose
 
 ```sh
-docker-compose up --build
+docker-compose -f docker-compose-development.yml up --build
 ```
 
 ### or run with background process
 
 ```sh
-docker-compose up --build -d
+docker-compose -f docker-compose-development.yml up --build -d
 ```
-### execution npm with container docker
+### execution yarn with docker container
 ```sh
 # install package
-docker-compose exec dashboard-queue npm install
+docker-compose -f docker-compose-development.yml exec dashboard-queue yarn install
 
-# running unit testing
-docker-compose exec dashboard-queue npm run test
+# running unit testing and coverage
+docker-compose -f docker-compose-development.yml exec dashboard-queue yarn run test:coverage
 ```
 
 ## Project Structure

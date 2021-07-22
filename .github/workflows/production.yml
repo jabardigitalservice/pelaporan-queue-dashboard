@@ -6,8 +6,6 @@ name: Node.js CI Production
 on:
   pull_request:
     branches: [ main ]
-  push:
-    branches: [ main ]
 
 jobs:
   build:
@@ -41,6 +39,8 @@ jobs:
           echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
           echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env
           echo CC_TEST_REPORTER_ID=${{ secrets.CC_TEST_REPORTER_ID }} >> .env
+          echo SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> .env
+          echo SENTRY_TRACE_RATE=${{ secrets.SENTRY_TRACE_RATE }} >> .env
 
   lint:
     needs: [ create-env ]
