@@ -7,7 +7,7 @@ services:
     container_name: dashboard-queue
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.development
     networks:
       pelaporan-dashboard-queue-network:
     restart: always
