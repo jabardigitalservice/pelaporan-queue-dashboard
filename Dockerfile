@@ -8,4 +8,4 @@ COPY package*.json ./
 
 RUN yarn install --silent && yarn cache clean --all
 
-CMD ["yarn", "prod"]
+CMD ["yarn", "start"]
