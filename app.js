@@ -46,7 +46,7 @@ Sentry.init({
   ],
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control
-  tracesSampleRate: process.env.SENTRY_TRACE_RATE
+  tracesSampleRate: Number(process.env.SENTRY_TRACE_RATE)
 })
 // RequestHandler creates a separate execution context using domains, so that every
 // transaction/span/breadcrumb is attached to its own Hub instance
