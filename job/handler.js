@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const handlerCompleted = (job) => {
   console.info(
-    `Job in ${job.queue.name} completed for: ${JSON.stringify(job.data)}`
+    `Job in ${job.queue.name} completed for: ${job.id}`
   );
   job.remove();
 };
@@ -9,23 +9,21 @@ const handlerCompleted = (job) => {
 const handlerFailure = (job, err) => {
   if (job.attemptsMade >= job.opts.attempts) {
     console.info(
-      `Job failures above threshold in ${job.queue.name} for: ${JSON.stringify(
-        job.data
-      )}`,
+      `Job failures above threshold in ${job.queue.name} for: ${job.id}`,
       err
     );
     job.remove();
     return null;
   }
   console.info(
-    `Job in ${job.queue.name} failed for: ${JSON.stringify(job.data)} with ${err.message
+    `Job in ${job.queue.name} failed for: ${job.id} with ${err.message
     }. ${job.opts.attempts - job.attemptsMade} attempts left`
   );
 };
 
 const handlerStalled = (job) => {
   console.info(
-    `Job in ${job.queue.name} stalled for: ${JSON.stringify(job.data)}`
+    `Job in ${job.queue.name} stalled for: ${job.id}`
   );
 };
 
