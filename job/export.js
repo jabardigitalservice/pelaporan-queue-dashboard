@@ -7,36 +7,35 @@ const {
 const { sqlCaseExport, excellOutput } = require('./process/cases')
 // const { sqlHistoriesExport, excellHistories } = require('../filter/historyfilter')
 
-const sameCondition = async (query, user, method, allow, mapingData, name, path, jobId) => {
+const sameCondition = async (job, method, allow, mapingData, name, path) => {
   try {
     // condition filter
-    const filter = filterCase(user, query)
-    const roleFilter = exportByRole({}, user, query)
+    const filter = filterCase(job.data.user, job.data.query)
+    const roleFilter = exportByRole({}, job.data.user, job.data.query)
     const params = { ...filter, ...roleFilter, ...WHERE_GLOBAL }
     params.last_history = { $exists: true, $ne: null }
 
     // condition search
-    const search = searchExport(query)
+    const search = searchExport(job.data.query)
 
-    const condition = method(params, search, query)
+    const condition = method(params, search, job.data.query)
     const result = await Case.aggregate(condition).allowDiskUse(allow)
     const mapingArray = result.map((cases) => mapingData(cases))
 
-    const fullName = user.fullname.replace(/\s/g, '-')
+    const fullName = job.data.user.fullname.replace(/\s/g, '-')
 
-    return await generateExcellPath(mapingArray, name, fullName, path, jobId)
+    return await generateExcellPath(mapingArray, name, fullName, path, job)
   } catch (error) {
     console.info(error)
     return error
   }
 }
 
-const jobCaseExport = async (query, user, jobId) => await sameCondition(
-  query, user, sqlCaseExport, false, excellOutput,
-  'Data-Pasien', 'cases', jobId
+const jobCaseExport = async (job) => await sameCondition(
+  job, sqlCaseExport, false, excellOutput, 'Data-Pasien', 'cases',
 )
 
-const jobHistoryExport = async (query, user, jobId) => await sameCondition(
+const jobHistoryExport = async (job) => await sameCondition(
   query, user, sqlHistoriesExport, true, excellHistories,
   'Data-Riwayat-Klinis', 'histories', jobId
 )

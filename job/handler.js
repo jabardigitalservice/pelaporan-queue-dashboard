@@ -6,6 +6,7 @@ const handlerCompleted = (job) => {
   job.remove();
 };
 
+// eslint-disable-next-line consistent-return
 const handlerFailure = (job, err) => {
   if (job.attemptsMade >= job.opts.attempts) {
     console.info(
