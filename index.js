@@ -1,10 +1,6 @@
 const app = require('./app')
+const { initJob } = require('./job')
 require('dotenv').config()
-
-app.listen(process.env.APP_PORT, () => {
-  // eslint-disable-next-line no-console
-  console.info(`pelaporan dashboard queue app running in port ${process.env.APP_PORT}`)
-})
 
 let server
 
@@ -36,3 +32,9 @@ process.on('SIGTERM', () => {
     server.close()
   }
 })
+
+app.listen(process.env.APP_PORT, () => {
+  // eslint-disable-next-line no-console
+  console.info(`pelaporan dashboard queue app running in port ${process.env.APP_PORT}`)
+})
+initJob()
