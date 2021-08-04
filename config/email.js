@@ -22,7 +22,7 @@ smtpTrans.verify((error, success) => {
   if (error) {
     Sentry.captureException(error)
   } else {
-    console.log(`Server Email is ready to take our messages with status ${success}`);
+    console.info(`Server Email is ready to take our messages with status ${success}`);
   }
 });
 

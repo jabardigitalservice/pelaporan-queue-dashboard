@@ -149,31 +149,22 @@ const locationPatient = (location, locationName) => {
   return res
 }
 
-const dateReplace = (date) => {
-  const searchRegExp = new RegExp('/', 'g')
-  const queryDate = date
-  const searchDate = queryDate.replace(searchRegExp, '-')
-  return searchDate
-}
-
 const searchRegExp = new RegExp('/', 'g')
 
-const setDate = (columnDate, minDate, maxDate) => {
-  return {
-    [columnDate]: {
-      "$gte": new Date(new Date(minDate).setHours(00, 00, 00)),
-      "$lt": new Date(new Date(maxDate).setHours(23, 59, 59))
-    }
+const setDate = (columnDate, minDate, maxDate) => ({
+  [columnDate]: {
+    $gte: new Date(new Date(minDate).setHours(0, 0, 0)),
+    $lt: new Date(new Date(maxDate).setHours(23, 59, 59))
   }
-}
+})
 
 const dateFilter = (query, columnDate) => {
   let dates = {}
-  if (query.min_date && query.max_date) {
-    let min = query.min_date
-    let max = query.max_date
-    let minDate = min.replace(searchRegExp, '-')
-    let maxDate = max.replace(searchRegExp, '-')
+  if (query.start_date && query.end_date) {
+    const min = query.start_date
+    const max = query.end_date
+    const minDate = min.replace(searchRegExp, '-')
+    const maxDate = max.replace(searchRegExp, '-')
     dates = setDate(columnDate, minDate, maxDate)
   }
 
@@ -183,8 +174,8 @@ const dateFilter = (query, columnDate) => {
 const oneDate = (query, columnDate) => {
   let dates = {}
   if (query.start_date) {
-    let search = query.start_date
-    let searchDate = search.replace(searchRegExp, '-')
+    const search = query.start_date
+    const searchDate = search.replace(searchRegExp, '-')
     dates = setDate(columnDate, searchDate, searchDate)
   }
 
@@ -203,7 +194,8 @@ module.exports = {
   checkExistColumn,
   locationPatient,
   yesOrNoBool,
-  dateReplace,
   dynamicColumnCreate,
-  setDate, dateFilter, oneDate
+  setDate,
+  dateFilter,
+  oneDate
 }

@@ -51,7 +51,7 @@ const generateExcellPath = async (data, title, fullName, pathFolder, job) => {
     // eslint-disable-next-line no-console
     console.info(error)
     const set = { 'message.generate': error.toString(), job_progress: 50, job_status: 'Error' }
-    await createLogStatus(jobId, set)
+    await createLogStatus(job.id, set)
     return error
   }
 }

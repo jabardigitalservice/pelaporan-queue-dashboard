@@ -5,7 +5,7 @@ const {
   exportByRole, WHERE_GLOBAL, searchExport, filterCase, generateExcellPath
 } = require('../utils')
 const { sqlCaseExport, excellOutput } = require('./process/cases')
-// const { sqlHistoriesExport, excellHistories } = require('../filter/historyfilter')
+const { sqlHistoriesExport, excellHistories } = require('./process/history')
 
 const sameCondition = async (job, method, allow, mapingData, name, path) => {
   try {
@@ -36,8 +36,7 @@ const jobCaseExport = async (job) => await sameCondition(
 )
 
 const jobHistoryExport = async (job) => await sameCondition(
-  query, user, sqlHistoriesExport, true, excellHistories,
-  'Data-Riwayat-Klinis', 'histories', jobId
+  job, sqlHistoriesExport, true, excellHistories, 'Data-Riwayat-Klinis', 'histories'
 )
 
 module.exports = {
