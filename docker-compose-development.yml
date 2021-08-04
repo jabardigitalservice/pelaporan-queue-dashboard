@@ -8,8 +8,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.development
-    networks:
-      pelaporan-dashboard-queue-network:
     restart: always
     volumes:
       - .:/usr/apps/jds/express-dashboard-queue
@@ -17,21 +15,8 @@ services:
     ports:
       - "${APP_PORT}:${APP_PORT}"
 
-  redis:
-    image: redis:6-alpine3.13
-    container_name: redis-dashboard
-    volumes:
-      - redis-dashboard:/data/redis
-    networks:
-      pelaporan-dashboard-queue-network:
-    ports:
-      - "${REDIS_PORT}:${REDIS_PORT}"
-
 #Docker Networks
 networks:
-  pelaporan-dashboard-queue-network:
-    driver: bridge
-
-#volume
-volumes:
-  redis-dashboard:
+  default:
+    external:
+      name: crowdsource-api-network
