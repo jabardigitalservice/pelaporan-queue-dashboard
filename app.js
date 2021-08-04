@@ -12,6 +12,7 @@ const Tracing = require('@sentry/tracing')
 const { notFoundHandler, errorHandler } = require('./utils/exceptions')
 const { arena, basicAuth } = require('./middleware')
 const { MORGAN_FORMAT } = require('./utils/constant')
+const { connectWithRetry } = require('./config')
 const routing = require('./routes')
 require('dotenv').config()
 
@@ -21,7 +22,9 @@ app.use(helmet()) // secure apps by setting various HTTP headers
 app.use(cors()) // enable cors
 app.options('*', cors()) // cors setup
 app.use(express.json({ limit: '200kb' })) // json limit
-
+if (process.env.NODE_ENV !== 'test') {
+  connectWithRetry() // connect to mongodb
+}
 const morganFormat = MORGAN_FORMAT
 app.use(morgan(morganFormat, { stream: process.stderr }))
 // remove favicon
