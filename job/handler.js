@@ -13,7 +13,6 @@ const handlerFailure = (job, err) => {
       `Job failures above threshold in ${job.queue.name} for: ${job.id}`,
       err
     );
-    job.remove();
     return null;
   }
   console.info(
