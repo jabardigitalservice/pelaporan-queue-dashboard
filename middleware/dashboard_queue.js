@@ -31,8 +31,6 @@ const arena = new Arena({
       }
     }
   ],
-  customCssPath: 'https://example.com/custom-arena-styles.css',
-  customJsPath: 'https://example.com/custom-arena-js.js',
 },
 {
   basePath: '/arena',
