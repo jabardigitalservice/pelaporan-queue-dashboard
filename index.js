@@ -36,24 +36,18 @@ process.on('SIGTERM', () => {
   }
 })
 
-if (process.env.CLUSTER_MODE === 'on') {
-  if (cluster.isMaster) {
-    const cpuCore = os.cpus().length;
-    for (let i = 0; i < cpuCore; i += 1) {
-      cluster.fork();
-    }
-    cluster.on('online', (worker) => {
-      if (worker.isConnected()) console.info(`worker is active ${worker.process.pid}`);
-    });
-    cluster.on('exit', (worker) => {
-      if (worker.isDead()) console.info(`worker is dead ${worker.process.pid}`);
-      cluster.fork();
-    });
-  } else {
-    app.listen(process.env.APP_PORT, () => {
-      console.info(`pelaporan dashboard queue app running in port ${process.env.APP_PORT}`)
-    })
+if (process.env.CLUSTER_MODE === 'on' && cluster.isMaster) {
+  const cpuCore = os.cpus().length;
+  for (let i = 0; i < cpuCore; i += 1) {
+    cluster.fork();
   }
+  cluster.on('online', (worker) => {
+    if (worker.isConnected()) console.info(`worker is active ${worker.process.pid}`);
+  });
+  cluster.on('exit', (worker) => {
+    if (worker.isDead()) console.info(`worker is dead ${worker.process.pid}`);
+    cluster.fork();
+  });
 } else {
   app.listen(process.env.APP_PORT, () => {
     console.info(`pelaporan dashboard queue app running in port ${process.env.APP_PORT}`)
