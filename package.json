@@ -59,7 +59,6 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-validator": "^6.6.0",
-    "helmet": "^4.6.0",
     "joi": "^17.3.0",
     "json2xls": "^0.1.2",
     "method-override": "^3.0.0",
