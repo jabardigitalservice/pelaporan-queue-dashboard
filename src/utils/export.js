@@ -17,13 +17,7 @@ const checkBucketName = (pathFolder) => {
 }
 
 const bucketOptions = async (nameQueue, fileName) => {
-  let bucketName
-  if (nameQueue === 'cases') {
-    bucketName = process.env.CASE_BUCKET_NAME
-  } else {
-    bucketName = process.env.HISTORY_BUCKET_NAME
-  }
-
+  const bucketName = checkBucketName(nameQueue)
   const result = await getSingedUrl(bucketName, fileName)
   return result
 }
