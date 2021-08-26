@@ -11,13 +11,12 @@ const casesJob = async (job, done) => {
   }
 }
 
-const historiesJob = async (job, done) => {
+const historiesJob = async (job) => {
   try {
     console.info(`running job histories! with id ${job.id}`)
     await jobHistoryExport(job)
-    done(null, 'succes')
   } catch (error) {
-    done(null, error)
+    console.ingo(error)
   }
 }
 
