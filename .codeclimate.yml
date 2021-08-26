@@ -11,10 +11,10 @@ checks:
       languages:
       - javascript
 exclude_patterns:
-- node_modules/
-- test/
-- config/
-- database
+- src/node_modules/
+- src/test/
+- src/config/
+- src/database
 
 
 # version: "2"
