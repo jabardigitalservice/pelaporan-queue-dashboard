@@ -7,7 +7,7 @@ services:
     container_name: dashboard-queue
     build:
       context: .
-      dockerfile: Dockerfile.development
+      dockerfile: ./docker/Dockerfile.development
     restart: always
     volumes:
       - .:/usr/apps/jds/express-dashboard-queue
