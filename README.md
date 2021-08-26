@@ -15,7 +15,7 @@
 - **Node.js** - [http://nodejs.org/](http://nodejs.org/)
 - **Express** - [http://expressjs.com/](http://expressjs.com/)
 - **nodemon** - [https://www.npmjs.com/package/nodemon](https://www.npmjs.com/package/nodemon)
-- **pm2** - [https://www.npmjs.com/package/pm2](https://www.npmjs.com/package/pm2)
+<!-- - **pm2** - [https://www.npmjs.com/package/pm2](https://www.npmjs.com/package/pm2) -->
 
 ## Feature
 1. error handling
@@ -26,6 +26,7 @@
 1. validiation, use express-valdator and joi
 1. custom message api response
 1. eslint airbnb base
+1. clustering mode manual using cluster module [https://nodejs.org/api/cluster.html](https://nodejs.org/api/cluster.html)
 
 ## Unit testing
 - **jestjs** - [https://jestjs.io/](https://jestjs.io/)
@@ -92,24 +93,30 @@ docker-compose -f docker-compose-development.yml exec dashboard-queue yarn run t
 ## Project Structure
 ```
 .
-├── api/              * all api file here
-├── config/           * all configuration file here
-|   └── db.js         * configuration database
-├── database/         * all models schema file here
-|   └── models        * all models file
-|   └── migrations    * all migrations file
-|   └── seeders       * all seeders file
-├── middleware/       * all middleware file here, for check before next to api
-├── routes/           * all file route here
-|   └── index.js      * register all route
-├── test/             * all test file here
-|   └── index.js      * test apps
-├── utils/            * all utils file here
+├── .github/            * all workflows github actions
+├── caprover/           * for deployment in caprover
+├── coverage/           * all output coverage
+├── docker/             * all dockerfile
+├── src/                * all source code in here
+  └── api/              * all api file here
+  └── config/           * all configuration file here
+  |  └── db.js         * configuration database
+  └── database/         * all models schema file here
+  |   └── models        * all models file
+  |   └── migrations    * all migrations file
+  |   └── seeders       * all seeders file
+  └── middleware/       * all middleware file here, for check before next to api
+  └── routes/           * all file route here
+  |   └── index.js      * register all route
+  └── test/             * all test file here
+  |   └── index.js      * test apps
+  └── utils/            * all utils file here
 
 ```
 
 ## Code Style Guides
 * Guideline:
+  * Single repo style
   * Use camelCase for variable name, naming function, and naming file api, and routes
   * Use UpperCase for Constant Variable
   * Use PascalCase for models name and required models
