@@ -15,3 +15,4 @@ yarn-error.log
 Makefile
 node_modules/
 coverage/
+src/test/
