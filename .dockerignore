@@ -11,4 +11,7 @@
 **/dist
 package-lock.json
 *.log
+yarn-error.log
 Makefile
+node_modules/
+coverage/

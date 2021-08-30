@@ -4,7 +4,6 @@ module.exports = {
   ...require('./custom'),
   ...require('./exceptions'),
   ...require('./pagination'),
-  ...require('./validation'),
   ...require('./role'),
   ...require('./search'),
   ...require('./filter'),
