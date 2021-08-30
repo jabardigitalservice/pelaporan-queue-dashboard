@@ -4,7 +4,7 @@ LABEL maintainer="Firman Abdul Hakim <karir.firman@gmail.com>"
 
 WORKDIR /usr/apps/jds/express-dashboard-queue
 
-COPY ./src ./
+COPY src/ .
 
 COPY package*.json ./
 
