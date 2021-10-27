@@ -9,7 +9,7 @@
 **/.editorconfig
 **/.aws
 **/dist
-package-lock.json
+# package-lock.json
 *.log
 yarn-error.log
 Makefile
