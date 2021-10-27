@@ -4,9 +4,9 @@ LABEL maintainer="Firman Abdul Hakim <karir.firman@gmail.com>"
 
 WORKDIR /usr/apps/jds/express-dashboard-queue
 
-COPY . .
+COPY package.json yarn.lock ./
 
-COPY package*.json ./
+COPY ./src ./
 
 RUN yarn install --production=true && yarn cache clean --all
 
